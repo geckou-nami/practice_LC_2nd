@@ -11,8 +11,14 @@
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",
+    "eslint": "^8.54.0",
+    "eslint-plugin-vue": "^9.18.1",
     "nuxt": "^3.8.1",
     "vue": "^3.3.8",
     "vue-router": "^4.2.5"
+  },
+  "dependencies": {
+    "@acab/reset.css": "^0.8.0",
+    "sass": "^1.69.5"
   }
 }

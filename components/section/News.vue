@@ -1,0 +1,101 @@
+<template>
+  <SectionContainer>
+    <div :class="$style.news_wrapper">
+      <ul :class="$style.news_list">
+        <li>
+          <img src="~/assets/images/00002.png" alt="IMAGE" :class="$style.image">
+          <div :class="$style.news_contents">
+            <h4 :class="$style.news_text">記事タイトル記事タイトル記事タイトル記事タイトル記事タイトル記事タイトル</h4>
+            <time>2023.3.3</time>
+          </div>
+        </li>
+        <li>
+          <img src="~/assets/images/00003.png" alt="IMAGE" :class="$style.image">
+          <div :class="$style.news_contents">
+            <h4 :class="$style.news_text">記事タイトル記事タイトル記事タイトル記事タイトル記事タイトル記事タイトル</h4>
+            <time>2023.3.3</time>
+          </div>
+        </li>
+        <li>
+          <img src="~/assets/images/00004.png" alt="IMAGE" :class="$style.image">
+          <div :class="$style.news_contents">
+            <h4 :class="$style.news_text">記事タイトル記事タイトル記事タイトル記事タイトル記事タイトル記事タイトル</h4>
+            <time>2023.3.3</time>
+          </div>
+        </li>
+        <li>
+          <img src="~/assets/images/00005.png" alt="IMAGE" :class="$style.image">
+          <div :class="$style.news_contents">
+            <h4 :class="$style.news_text">記事タイトル記事タイトル記事タイトル記事タイトル記事タイトル記事タイトル</h4>
+            <time>2023.3.3</time>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </SectionContainer>
+</template>
+
+<style lang="scss" module>
+
+.news_wrapper {
+  width:100%;
+}
+
+.news_list {
+  display       : flex;
+  flex-direction: column;
+  width         : 100%;
+  gap           : var(--sp-larger);
+  padding       : 0 calc(var(--bv) * 10);
+
+  li {
+    width           : calc(100% - (var(--bv) * 8) * 3);
+    display         : flex;
+    justify-content : center;
+    background-color: var(--dark-white);
+    border-radius   : var(--border-radius-base);
+    box-shadow      : 0px 0px 64px 0px rgba(47, 7, 26, 0.20);
+    backdrop-filter : blur(8px);
+    position        : relative;
+
+    &:nth-child(1) {
+      left:calc(calc(var(--bv) * 8) * 0);
+    }
+
+    &:nth-child(2) {
+      left:calc(calc(var(--bv) * 8) * 1);
+    }
+
+    &:nth-child(3) {
+      left:calc(calc(var(--bv) * 8) * 2);
+    }
+
+    &:nth-child(4) {
+      left:calc(calc(var(--bv) * 8) * 3);
+    }
+  }
+}
+
+.image {
+  flex         : 0 0 38%;
+  aspect-ratio : var(--silver-ratio);
+  display      : flex;
+  width        : 38%;
+  object-fit   : cover;
+  border-radius: var(--border-radius-base) 0 0 var(--border-radius-base);
+}
+
+.news_contents {
+  display        : flex;
+  flex-direction : column;
+  justify-content: space-between;
+  color          : var(--black);
+  padding        : var(--sp-large);
+  gap            : var(--sp-large);
+  overflow: hidden;
+
+  time {
+    text-align: end;
+  }
+}
+</style>
