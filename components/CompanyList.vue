@@ -1,6 +1,30 @@
+<script setup lang="ts">
+type Props = {
+  companies: {image: string, name: string, link: string}[]
+}
+
+const props = defineProps<Props>()
+</script>
+
 <template>
-  <div :class="$style.company_list_wrapper">
-    <div :class="$style.company_list_item">
+  <ul 
+    v-show="companies.length"
+    :class="$style.company_list_wrapper"
+  >
+    <li 
+      v-for="company in companies"
+      :key="company.name"
+      :class="$style.company_list_item"
+    >
+      <div :class="$style.company_list_circle">
+        <img 
+          :src="`/images/${company.image}`" 
+          :alt="company.name" 
+          :class="$style.company_list_pic"
+        >
+      </div>
+    </li>
+    <!-- <div :class="$style.company_list_item">
       <div :class="$style.company_list_circle">
         <img src="~/assets/images/logo_tanaka_flag.webp" alt="企業ロゴ" :class="$style.company_list_pic">
       </div>
@@ -34,15 +58,8 @@
       <div :class="$style.company_list_circle">
         <img src="~/assets/images/logo_tanaka_flag.webp" alt="企業ロゴ" :class="$style.company_list_pic">
       </div>
-    </div>
-    <div :class="$style.company_list_item">
-      <div :class="$style.company_list_circle">
-        <img src="~/assets/images/logo_tanaka_flag.webp" alt="企業ロゴ" :class="$style.company_list_pic">
-      </div>
-    </div>
-
-
-  </div>
+    </div> -->
+  </ul>
 </template>
 
 <style lang="scss" module>

@@ -18,12 +18,13 @@ $minViewport: 740;
   --main-color        : var(--pink);
   --text-color        : var(--white);
   --border-color      : var(--white);
+  --transparent-white :rgba(255, 255, 255, 0.80);
 
   // FONT
   --fs-medium            : #{calcClamp(14, 16, $minViewport, $maxViewport)};
   --fs-large             : #{calcClamp(16, 18, $minViewport, $maxViewport)};
   --fs-larger            : #{calcClamp(18, 22, $minViewport, $maxViewport)};
-  --fs-max               : #{calcClamp(20, 28, $minViewport, $maxViewport)};
+  --fs-max               : #{calcClamp(22, 32, $minViewport, $maxViewport)};
   --fs-small             : #{calcClamp(12, 14, $minViewport, $maxViewport)};
   --fs-smaller           : #{calcClamp(11, 12, $minViewport, $maxViewport)};
   --fs-min               : 10px;

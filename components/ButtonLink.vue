@@ -22,6 +22,7 @@
   border         : 4px solid var(--accent, #DF237E);
   background     : var(--white, #FFF);
   box-shadow     : 0px 0px 64px 0px rgba(47, 7, 26, 0.20);
+  cursor: pointer;
 
   @include mediaScreen('tablet') {
     font-size: var(--fs-larger);

@@ -1,27 +1,59 @@
+<script setup lang="ts">
+type Props = {
+  members: {name: string, text: string, image: string}[]
+}
+
+const props = withDefaults(defineProps<Props>(), {})
+const targetElement = ref<HTMLElement | null>(null)
+const elements = [
+  targetElement,
+]
+
+onMounted(() => {
+  useIntersectionObserver().doObserve(elements)
+})
+
+</script>
+
 <template>
-  <div :class="$style.member_list_wrapper">
-    <div :class="$style.member_list_card">
+  <ul 
+    ref="targetElement"
+    :class="$style.member_list_wrapper"
+  >
+    <li 
+      v-for="(member, index) in members"
+      :key="member.name"
+      :class="$style.member_list_card"
+    >
+      <img 
+        v-if="member.image"
+        :src="`/images/${member.image}`"
+        :alt="member.name"
+        :class="$style.member_list_pic"
+      >
+      <div :class="$style.member_list_contents">
+        <h4>{{ member.name }}</h4>
+        <p 
+          v-html="member.text"
+          :class="$style.member_list_text"
+        />
+      </div>
+    </li>
+    <!-- <li :class="$style.member_list_card">
       <img src="~/assets/images/no_image.png" alt="顔写真" :class="$style.member_list_pic">
       <div :class="$style.member_list_contents">
         <h4>理事／武者 慶佑</h4>
         <p :class="$style.member_list_text">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
       </div>
-    </div>
-    <div :class="$style.member_list_card">
+    </li>
+    <li :class="$style.member_list_card">
       <img src="~/assets/images/no_image.png" alt="顔写真" :class="$style.member_list_pic">
       <div :class="$style.member_list_contents">
         <h4>理事／武者 慶佑</h4>
         <p :class="$style.member_list_text">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
       </div>
-    </div>
-    <div :class="$style.member_list_card">
-      <img src="~/assets/images/no_image.png" alt="顔写真" :class="$style.member_list_pic">
-      <div :class="$style.member_list_contents">
-        <h4>理事／武者 慶佑</h4>
-        <p :class="$style.member_list_text">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
-      </div>
-    </div>
-  </div>
+    </li> -->
+  </ul>
 </template>
 
 <style lang="scss" module>

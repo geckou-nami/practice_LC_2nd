@@ -26,7 +26,7 @@
         <h4 :class="$style.links_list_title">運営会社</h4>
         <dl 
         :class="$style.links_list" 
-        v-for ="link in links"
+        v-for = "link in links"
         :key = "link.team">
           <dt>{{ link.team }}</dt>
           <dd v-html="link.description"></dd>

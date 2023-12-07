@@ -1,3 +1,12 @@
+<script setup lang="ts">
+type Props = {
+  members: {name: string, text: string, image: string}[]
+  companies: {image: string, name: string, link: string}[]
+}
+
+const props = defineProps<Props>()
+</script>
+
 <template>
   <SectionContainer>
     <div :class="$style.member_wrapper">
@@ -12,8 +21,8 @@
         </div>
       </div>
     </div>
-    <MemberList />
-    <CompanyList />
+    <MemberList :members="members" />
+    <CompanyList :companies="companies" />
   </SectionContainer>
 </template>
 
