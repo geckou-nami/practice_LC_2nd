@@ -13,7 +13,7 @@
       </div>
     </div>
   </div>
-  <!-- <GlobalNavL  ist /> -->
+  <GlobalNavList />
 </template>
 
 <style lang="scss" module>

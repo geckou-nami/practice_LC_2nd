@@ -1,10 +1,8 @@
 <script setup lang="ts">
-type Props = {
-  members: {name: string, text: string, image: string}[]
+const props = defineProps<{
+  childMembers: {name: string, text: string, image: string}[]
   companies: {image: string, name: string, link: string}[]
-}
-
-const props = defineProps<Props>()
+}>()
 </script>
 
 <template>
@@ -21,7 +19,7 @@ const props = defineProps<Props>()
         </div>
       </div>
     </div>
-    <MemberList :members="members" />
+    <MemberList :grandChildMembers="childMembers" />
     <CompanyList :companies="companies" />
   </SectionContainer>
 </template>

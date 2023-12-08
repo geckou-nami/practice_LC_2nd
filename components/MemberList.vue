@@ -1,6 +1,6 @@
 <script setup lang="ts">
 type Props = {
-  members: {name: string, text: string, image: string}[]
+  grandChildMembers: {name: string, text: string, image: string}[]
 }
 
 const props = withDefaults(defineProps<Props>(), {})

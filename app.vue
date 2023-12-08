@@ -1,13 +1,8 @@
 <script setup lang="ts">
-const members = ref([])
-const companies = ref([])
+const members = await fetch('/json/members.json').then(res => res.json())
+const companies = await fetch('/json/companies.json').then(res => res.json())
 
-onMounted(async() => {
-  members.value = await fetch('/json/members.json').then(res => res.json())
-  companies.value = await fetch('/json/companies.json').then(res => res.json())
-})
-
-console.log(members.value);
+console.log(members);
 
 </script>
 
@@ -18,7 +13,10 @@ console.log(members.value);
     <main :class="$style.main_container">
       <SectionAbout />
       <SectionNews />
-      <SectionMember />
+      <SectionMember
+        :childMembers="members"
+        :companies="companies"
+      />
       <SectionActivity />
       <SectionContact id="contact"/>
       <SectionLinks />
