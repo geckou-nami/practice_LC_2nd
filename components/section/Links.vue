@@ -42,6 +42,7 @@
 </template>
 
 <style lang="scss" module>
+@use '~/assets/scss/mixin' as *;
 
 .links_wrapper {
   width          : 100%;
@@ -49,6 +50,14 @@
   text-align     : center;
   justify-content: space-around;
   align-items    : flex-start;
+
+  @include mediaScreen('tablet') {
+    display        : flex;
+    flex-direction : column;
+    justify-content: center;
+    align-items    : center;
+    gap            : calc(var(--sp-max) * 2);
+  }
 }
 
 .inks_contents {
@@ -56,12 +65,21 @@
   img {
     width        : calc(var(--bv) * 30);
     margin-bottom: var(--sp-medium);
+
+    @include mediaScreen('tablet') {
+      width        : calc(var(--bv) * 40);
+    }
   }
 }
 
 .links_list_title  {
   font-size    : var(--fs-larger);
   margin-bottom: var(--sp-large);
+
+
+  @include mediaScreen('tablet') {
+    margin-bottom: calc(var(--sp-large) * 1.5);
+  }
 }
 
 .links_list {

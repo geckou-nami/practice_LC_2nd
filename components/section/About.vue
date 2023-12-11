@@ -26,6 +26,16 @@
   "heading heading live"
   "heading heading live";
   gap: calc(var(--bv) * 4) calc(var(--bv) * 15);
+
+  @include mediaScreen('tablet') {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows   : auto auto 1fr;
+    grid-template-areas  : 
+    "styling live "
+    "description description "
+    "heading heading ";
+    gap: calc(var(--bv) * 5);
+  }
 }
 
 .about_description {
@@ -42,6 +52,10 @@
   font-size   : var(--fs-larger);
   margin-top  : 60px;
   margin-right: 90px;
+
+  @include mediaScreen('tablet') {
+    margin  : 0;;
+  }
 }
 
 .styling_img {
@@ -50,6 +64,10 @@
 
 .live_img {
   grid-area:live;
+
+  @include mediaScreen('tablet') {
+    margin-top  : calc(var(--bv) * 7);
+  }
 }
 
 </style>

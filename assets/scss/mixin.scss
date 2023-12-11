@@ -1,8 +1,15 @@
 
+// $breakpoint: (
+//   mobile : 'screen and (max-width: 468px)',
+//   tablet : 'screen and (max-width: 768px)',
+//   desktop: 'screen and (min-width: 1024px)'
+// );
+// これは私が設定した値。
+
 $breakpoint: (
-  mobile : 'screen and (max-width: 468px)',
-  tablet : 'screen and (max-width: 768px)',
-  desktop: 'screen and (min-width: 1024px)'
+  mobile : 'screen and (max-width: 599px)',
+  tablet : 'screen and (max-width: 1024px)',
+  desktop: 'screen and (min-width: 1025px)'
 );
 
 @mixin mediaScreen($bp) {
@@ -10,3 +17,11 @@ $breakpoint: (
   @content;
   }
 }
+
+// @use '~/assets/scss/mixin' as *;
+// これを使いたいページの上部に記載して、
+
+// つかうときはこんなふうに書きます
+// @include mediaScreen('tablet') {
+//   ここにそれぞれの大きさでのCSS;
+// }

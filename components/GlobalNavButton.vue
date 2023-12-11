@@ -9,9 +9,10 @@ const toggleMenu = () => {
 <template>
   <div :class="$style.global_nav_container">
     <div :class="$style.hamburger_circle">
-      <button :class="[$style.hamburger_menu, isActive ? $style.active : '']"
-              @click="toggleMenu">
-        <span></span>
+      <button 
+        :class="[$style.hamburger_menu, isActive ? $style.active : '']"
+        @click="toggleMenu">
+        <span></span> 
         <span></span>
         <span></span>
       </button>
@@ -20,16 +21,21 @@ const toggleMenu = () => {
 </template>
 
 <style lang="scss" module>
+@use '~/assets/scss/mixin' as *;
 .hamburger_circle {
-  width:64px;
-  height:64px;
-  border-radius: 50%;
+  width           : 64px;
+  height          : 64px;
+  border-radius   : 50%;
   background-color: var(--white);
-  display:flex;
-  justify-content: center;
-  align-items: center;
-}
+  display         : flex;
+  justify-content : center;
+  align-items     : center;
 
+  @include mediaScreen('tablet') {
+    width : 50px;
+    height: 50px;
+  }
+}
 .hamburger_menu {
   --opacity   : 1;
   --rotate    : 0;
@@ -39,6 +45,10 @@ const toggleMenu = () => {
   width       : 50px;
   aspect-ratio: 1;
   cursor      : pointer;
+
+  @include mediaScreen('tablet') {
+    width : 40px;
+  }
 
   &.active {
     --opacity  : 0;

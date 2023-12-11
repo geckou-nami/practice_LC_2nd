@@ -1,12 +1,14 @@
 <script setup lang="ts">
-const props = defineProps<{
+type Props = {
   childMembers: {name: string, text: string, image: string}[]
   companies: {image: string, name: string, link: string}[]
-}>()
+}
+
+const props = defineProps<Props>()
 </script>
 
 <template>
-  <SectionContainer>
+  <SectionContainer :class="$style.member_section_container">
     <div :class="$style.member_wrapper">
       <div :class="$style.member_card">
         <img src="~/assets/images/chairman.webp" alt="会長の写真" :class="$style.member_pic">
@@ -25,6 +27,13 @@ const props = defineProps<{
 </template>
 
 <style lang="scss" module>
+@use '~/assets/scss/mixin' as *;
+
+.member_section_container {
+  display: flex;
+  flex-direction: column;
+  gap:calc(var(--bv) * 16);
+}
 .member_wrapper {
   width:100%;
 }
@@ -32,12 +41,16 @@ const props = defineProps<{
 .member_card {
   width          : 100%;
   display        : flex;
-  border-radius  : 32px;
+  border-radius  : var(  --border-radius-base);
   background     : var(--dark-white);
   box-shadow     : 0px 0px 64px 0px rgba(47, 7, 26, 0.20);
   backdrop-filter: blur(8px);
   overflow       : hidden;
 
+  @include mediaScreen('tablet') {
+    display: flex;
+    flex-direction: column;
+  }
 
   img {
     flex          : 0 0 38%;
@@ -45,6 +58,15 @@ const props = defineProps<{
     object-fit    : cover;
     mix-blend-mode: darken;
     aspect-ratio  : var(--golden-ratio);
+
+    @include mediaScreen('tablet') {
+      width   : 100%;
+      height  : 100%;
+      position: absolute;
+      top     : 0;
+      left    : 0;
+      opacity : .3;
+    }
   }
 }
 
@@ -59,6 +81,11 @@ const props = defineProps<{
   p {
     font-size     : var(--fs-large);
     letter-spacing: 0.1em;
+  }
+
+  @include mediaScreen('tablet') {
+    margin-top: calc(var(--sp-max) * 2);
+    padding : var(--sp-max)  var(--sp-large);
   }
 }
 

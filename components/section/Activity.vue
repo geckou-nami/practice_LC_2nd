@@ -38,22 +38,33 @@
 </template>
 
 <style lang="scss" module>
-
+@use '~/assets/scss/mixin' as *;
 .activity_wrapper {
-  width     : 100%;
-  display   : flex;
+  width         : 100%;
+  display       : flex;
   flex-direction: column;
-  align-items: center;
-  gap       : var(--sp-large);
+  align-items   : center;
+  gap           : var(--sp-large);
+
+  @include mediaScreen('tablet') {
+    gap : calc(var(--sp-max) * 1.5);
+  }
 }
 
 .activity_item {
-  display: flex;
+  display    : flex;
   align-items: center;
-  gap: var(--sp-large);
-  max-width: calc(100% - var(--bv) * 50);
-  position: relative;
-  left:var(--sp-larger);
+  gap        : var(--sp-large);
+  max-width  : calc(100% - var(--bv) * 50);
+  position   : relative;
+  left       : var(--sp-larger);
+
+  @include mediaScreen('tablet') {
+    display       : flex;
+    flex-direction: column;
+    left:0 !important;
+    max-width: 100%;
+  }
 
   &:nth-child(1) {
     left:calc(var(--sp-max) * -1);
@@ -66,8 +77,6 @@
   &:nth-child(3) {
     left:calc(var(--sp-max) * 1);
   }
-  
-
 }
 
 .icon_circle {
@@ -82,11 +91,23 @@
   padding: var(--sp-large);
   box-shadow: 0px 0px 64px 0px rgba(47, 7, 26, 0.20);
   backdrop-filter: blur(8px);
+
+  @include mediaScreen('tablet') {
+    width :calc(var(--bv) * 26);
+    height :calc(var(--bv) * 26);
+  }
 }
 
 .activity_contents {
   display: flex;
   flex-direction: column;
   gap: var(--sp-medium);
+  line-height: 1.8;
+
+  h4 {
+    @include mediaScreen('tablet') {
+      text-align : center;
+    }
+  }
 }
 </style>

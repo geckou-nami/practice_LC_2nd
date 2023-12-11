@@ -13,17 +13,21 @@
       </div>
     </div>
   </div>
-  <GlobalNavList />
 </template>
 
 <style lang="scss" module>
+@use '~/assets/scss/mixin' as *;
 .flame_container {
-  width   : 100dvw;
-  height  : 100dvh;
+  width   : 100vw;
+  height  : 100vh;
   padding : var(--border-margin);
-  /* position: fixed; */
+  position: fixed;
   top     : 0;
-  z-index : var(--z-i ndex-nav);
+  z-index : var(--z-index-nav);
+
+  @include mediaScreen('tablet') {
+    padding:var(--border-size );
+  }
 }
 .frame {
   width        : 100%;
@@ -39,24 +43,38 @@
     height: 90px;
     position: relative;
     left:calc(var(--sp-medium) * -1);
+
+    @include mediaScreen('tablet') {
+      width : 200px;
+      height: 45px;
+    }
   }
 }
 
 .menu_box {
-  display: flex;
+  display       : flex;
   flex-direction: column;
-  gap:var(--sp-large);
-  align-items: flex-end;
+  gap           : var(--sp-large);
+  align-items   : flex-end;
+
+  @include mediaScreen('tablet') {
+    gap : var(--sp-small);
+  }
 }
 
 .sns_icon {
-  width:48px;
-  height:48px;
-  border-radius: 50%;
-  background: var(--button-gradient);
+  width          : 48px;
+  height         : 48px;
+  border-radius  : 50%;
+  background     : var(--button-gradient);
   backdrop-filter: blur(2px);
-  display: flex;
+  display        : flex;
   justify-content: center;
-  align-items: center;
+  align-items    : center;
+
+  @include mediaScreen('tablet') {
+    width : 38px;
+    height: 38px;
+  }
 }
 </style>

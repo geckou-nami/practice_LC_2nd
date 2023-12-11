@@ -9,9 +9,9 @@ const elements = [
   targetElement,
 ]
 
-onMounted(() => {
-  useIntersectionObserver().doObserve(elements)
-})
+// onMounted(() => {
+//   useIntersectionObserver().doObserve(elements)
+// })
 
 </script>
 
@@ -21,7 +21,7 @@ onMounted(() => {
     :class="$style.member_list_wrapper"
   >
     <li 
-      v-for="(member, index) in members"
+      v-for="(member, index) in grandChildMembers"
       :key="member.name"
       :class="$style.member_list_card"
     >
@@ -39,44 +39,36 @@ onMounted(() => {
         />
       </div>
     </li>
-    <!-- <li :class="$style.member_list_card">
-      <img src="~/assets/images/no_image.png" alt="顔写真" :class="$style.member_list_pic">
-      <div :class="$style.member_list_contents">
-        <h4>理事／武者 慶佑</h4>
-        <p :class="$style.member_list_text">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
-      </div>
-    </li>
-    <li :class="$style.member_list_card">
-      <img src="~/assets/images/no_image.png" alt="顔写真" :class="$style.member_list_pic">
-      <div :class="$style.member_list_contents">
-        <h4>理事／武者 慶佑</h4>
-        <p :class="$style.member_list_text">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
-      </div>
-    </li> -->
   </ul>
 </template>
 
 <style lang="scss" module>
-
+@use '~/assets/scss/mixin' as *;
 .member_list_wrapper {
   width     : 100%;
   display   : flex;
-  gap       : var(--sp-larger);
-  margin-top: calc(var(--sp-larger) * 3);
+  gap       : var(--sp-max);
+  justify-content: flex-start;
+
+  @include mediaScreen('tablet')  {
+    display: flex;
+    flex-direction: column;
+    gap       : var(--sp-large);
+  }
 }
 
 .member_list_card {
   background-color: var(--dark-white);
-  border-radius   : 32px;
+  border-radius   : var( --border-radius-base);
   display         : flex;
   flex-direction  : column;
+  justify-content: flex-start;
   align-items     : center;
   text-align      : center;
   gap             : var(--sp-larger);
-  padding         : var(--sp-large);
+  padding         : calc(var(--sp-larger) * 1.5)  var(--sp-large);
   position        : relative;
   
-
   img {
     border-radius: 50%;
     width        : 160px;
@@ -89,6 +81,11 @@ onMounted(() => {
 
   &:nth-child(3) {
     top: calc(var(--sp-larger) * 2);
+  }
+
+  @include mediaScreen('tablet')  {
+    top: 0 !important;
+    gap: calc(var(--sp-larger) * 1.5);
   }
 }
 

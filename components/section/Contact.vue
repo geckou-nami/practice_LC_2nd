@@ -8,7 +8,7 @@
       <button>
         <a :class="$style.contact_button" href="#">
           <IconMail />
-          CONTACT US!
+          CONTACT
         </a>
       </button>
     </div>
@@ -16,6 +16,7 @@
 </template>
 
 <style lang="scss" module>
+@use '~/assets/scss/mixin' as *;
 
 .contact_wrapper {
   width          : 100%;
@@ -27,12 +28,16 @@
   gap            : var(--sp-larger)
 }
 
-
 .contact_text {
   font-size: var(--fs-larger);
   font-weight: bold;
   text-align: center;
+
+  @include mediaScreen('tablet') {
+    text-align: start;
+  }
 }
+
 .contact_button {
   display        : inline-flex;
   color          : var(--white);

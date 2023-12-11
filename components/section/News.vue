@@ -36,6 +36,7 @@
 </template>
 
 <style lang="scss" module>
+@use '~/assets/scss/mixin' as *;
 
 .news_wrapper {
   width:100%;
@@ -48,7 +49,16 @@
   gap           : var(--sp-larger);
   padding       : 0 calc(var(--bv) * 10);
 
-  li {
+
+  @include mediaScreen('tablet') {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap           : var(--sp-medium);
+    padding       : 0 ;
+  }
+
+  > li {
     width           : calc(100% - (var(--bv) * 8) * 3);
     display         : flex;
     justify-content : center;
@@ -73,7 +83,19 @@
     &:nth-child(4) {
       left:calc(calc(var(--bv) * 8) * 3);
     }
-  }
+
+    @include mediaScreen('tablet') {
+      display       : flex;
+      flex-direction: column;
+      width         : calc((100% - var(--sp-medium)) / 2);
+      left          : 0 !important;
+
+      &:nth-child(odd) {
+        top: calc(var(--bv) * -8);
+      }
+    }
+  } 
+
 }
 
 .image {
@@ -83,6 +105,11 @@
   width        : 38%;
   object-fit   : cover;
   border-radius: var(--border-radius-base) 0 0 var(--border-radius-base);
+
+  @include mediaScreen('tablet') {
+    width        : 100%;
+    border-radius: var(--border-radius-base) var(--border-radius-base) 0 0;
+  }
 }
 
 .news_contents {
@@ -96,6 +123,10 @@
 
   time {
     text-align: end;
+  }
+
+  @include mediaScreen('tablet') {
+    padding        : var(--sp-medium);
   }
 }
 </style>

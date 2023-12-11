@@ -8,12 +8,12 @@ console.log(members);
 
 <template>
   <div>
-    <FlameMenu />
+    <!-- <FlameMenu /> -->
     <SectionHero />
     <main :class="$style.main_container">
       <SectionAbout />
       <SectionNews />
-      <SectionMember
+      <SectionMember 
         :childMembers="members"
         :companies="companies"
       />
