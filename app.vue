@@ -8,7 +8,7 @@ console.log(members);
 
 <template>
   <div>
-    <!-- <FlameMenu /> -->
+    <FlameMenu />
     <SectionHero />
     <main :class="$style.main_container">
       <SectionAbout />
