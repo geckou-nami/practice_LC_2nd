@@ -27,6 +27,7 @@ $minViewport: 740;
   --fs-max               : #{calcClamp(22, 32, $minViewport, $maxViewport)};
   --fs-small             : #{calcClamp(12, 14, $minViewport, $maxViewport)};
   --fs-smaller           : #{calcClamp(11, 12, $minViewport, $maxViewport)};
+  --fs-heading           : clamp(10rem, 26.67vw, 20rem);
   --fs-min               : 10px;
   --line-height-tight    : 1.12;
   --line-height-narrow   : 1.4;

@@ -1,5 +1,12 @@
+<script setup lang="ts">
+
+onMounted(() => {
+  useIntersectionObserver().doObserve(elements)
+})
+</script>
+
 <template>
-  <SectionContainer>
+  <SectionContainer :sectionName="'CONTACT'">
     <div :class="$style.contact_wrapper">
       <div :class="$style.contact_text">
         執筆・セミナーなどなどライブコマースに関わるお仕事の依頼、<br>

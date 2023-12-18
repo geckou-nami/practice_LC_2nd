@@ -18,8 +18,15 @@ const props = defineProps<Props>()
     >
       <div :class="$style.company_list_circle">
         <img 
+          v-if="company.image"
           :src="`/images/${company.image}`" 
           :alt="company.name" 
+          :class="$style.company_list_pic"
+        >
+        <img
+          v-else
+          src="@/assets/images/comingsoon.png"
+          :alt="company.name"
           :class="$style.company_list_pic"
         >
       </div>

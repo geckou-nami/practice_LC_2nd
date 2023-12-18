@@ -31,6 +31,12 @@ const elements = [
         :alt="member.name"
         :class="$style.member_list_pic"
       >
+      <img 
+        v-else
+        src="@/assets/images/comingsoon.png"
+        :alt="member.name"
+        :class="$style.member_list_pic"
+      >
       <div :class="$style.member_list_contents">
         <h4>{{ member.name }}</h4>
         <p 
@@ -58,6 +64,7 @@ const elements = [
 }
 
 .member_list_card {
+  width:calc((100% - var(--sp-max) * 2) / 3);
   background-color: var(--dark-white);
   border-radius   : var( --border-radius-base);
   display         : flex;
@@ -84,6 +91,7 @@ const elements = [
   }
 
   @include mediaScreen('tablet')  {
+    width:calc((100% - var(--sp-large) * 2) / 3);
     top: 0 !important;
     gap: calc(var(--sp-larger) * 1.5);
   }

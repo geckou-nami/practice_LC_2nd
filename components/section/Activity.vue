@@ -16,10 +16,14 @@
       image:'IconArticle',
     },
   ]
+
+  onMounted(() => {
+  useIntersectionObserver().doObserve(elements)
+})
 </script>
 
 <template>
-  <SectionContainer>
+  <SectionContainer :sectionName="'ACTIVITY'">
     <div :class="$style.activity_wrapper">
       <div :class="$style.activity_item"
         v-for=" activity in activities"

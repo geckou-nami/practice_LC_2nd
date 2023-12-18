@@ -5,10 +5,16 @@ type Props = {
 }
 
 const props = defineProps<Props>()
+
+onMounted(() => {
+  useIntersectionObserver().doObserve(elements)
+})
 </script>
 
 <template>
-  <SectionContainer :class="$style.member_section_container">
+  <SectionContainer 
+      :sectionName="'MEMBER'"
+      :class="$style.member_section_container">
     <div :class="$style.member_wrapper">
       <div :class="$style.member_card">
         <img src="~/assets/images/chairman.webp" alt="会長の写真" :class="$style.member_pic">
@@ -32,7 +38,7 @@ const props = defineProps<Props>()
 .member_section_container {
   display: flex;
   flex-direction: column;
-  gap:calc(var(--bv) * 16);
+  gap:calc(var(--bv) * 40);
 }
 .member_wrapper {
   width:100%;
@@ -55,7 +61,7 @@ const props = defineProps<Props>()
   img {
     flex          : 0 0 38%;
     width         : 38%;
-    object-fit    : cover;
+    object-fit    : contain;
     mix-blend-mode: darken;
     aspect-ratio  : var(--golden-ratio);
 

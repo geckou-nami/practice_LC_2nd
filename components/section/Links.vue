@@ -17,10 +17,14 @@
       description:'田中 哲',
     },
   ]
+
+  onMounted(() => {
+  useIntersectionObserver().doObserve(elements)
+})
 </script>
 
 <template>
-  <SectionContainer>
+  <SectionContainer :sectionName="'LINKS'">
     <div :class="$style.links_wrapper">
       <div :class="$style.inks_contents">
         <h4 :class="$style.links_list_title">運営会社</h4>

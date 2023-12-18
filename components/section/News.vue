@@ -1,5 +1,12 @@
+<script setup lang="ts">
+
+onMounted(() => {
+  useIntersectionObserver().doObserve(elements)
+})
+</script>
+
 <template>
-  <SectionContainer>
+  <SectionContainer :sectionName="'NEWS'">
     <div :class="$style.news_wrapper">
       <ul :class="$style.news_list">
         <li>

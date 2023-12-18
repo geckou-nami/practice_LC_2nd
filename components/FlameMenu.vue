@@ -1,15 +1,14 @@
 <template>
   <div :class="$style.flame_container">
-    <div :class="$style.frame">
-      <img src="~/assets/images/mainlogo.png" alt="日本ライブコマース協会">
-      <div :class="$style.menu_box">
-          <GlobalNavButton />
-        <div :class="$style.sns_icon">
-          <IconTwitter />
-        </div>
-        <div :class="$style.sns_icon">
-          <IconNote />
-        </div>
+    <div :class="$style.frame" />
+    <img :class="$style.frame_logo" src="~/assets/images/mainlogo.png" alt="日本ライブコマース協会">
+    <div :class="$style.menu_box">
+        <GlobalNavButton />
+      <div :class="$style.sns_icon">
+        <IconTwitter />
+      </div>
+      <div :class="$style.sns_icon">
+        <IconNote />
       </div>
     </div>
   </div>
@@ -19,46 +18,50 @@
 @use '~/assets/scss/mixin' as *;
 .flame_container {
   width   : 100vw;
-  height  : 100vh;
-  padding : var(--border-margin);
-  position: fixed;
-  top     : 0;
-  z-index : var(--z-index-nav);
+  position: relative;
 
   @include mediaScreen('tablet') {
     padding:var(--border-size );
   }
 }
 .frame {
-  width        : 100%;
-  height       : 100%;
+  width : calc(100% - (var(--bv) * 16));
+  height       : calc(100% - (var(--bv) * 16));
   border       : var(--border-size) solid var(--white);
   border-radius: var(--border-radius-base);
-  display: flex;
-  justify-content: space-between;
-  padding:var(--sp-medium);
+  position     : fixed;
+  top          : calc(var(--bv) * 8);
+  left         : calc(var(--bv) * 8);
+  z-index: var(--z-index-nav);
+  pointer-events: none;
+}
 
-  img {
-    width:480px;
-    height: 90px;
-    position: relative;
-    left:calc(var(--sp-medium) * -1);
+.frame_logo {
+  width   : 480px;
+  height  : 90px;
+  position: fixed;
+  top     : calc(var(--bv) * 12);
+  left    : calc(var(--bv) * 12);
+  z-index : var(--z-index-nav);
 
-    @include mediaScreen('tablet') {
-      width : 200px;
-      height: 45px;
-    }
+  @include mediaScreen('tablet') {
+    width : 200px;
+    height: 45px;
   }
 }
 
 .menu_box {
+  position      : fixed;
+  top           : calc(var(--bv) * 13);
+  right         : calc(var(--bv) * 13);
   display       : flex;
   flex-direction: column;
   gap           : var(--sp-large);
   align-items   : flex-end;
+  z-index       : var(--z-index-nav);
 
   @include mediaScreen('tablet') {
-    gap : var(--sp-small);
+    gap: var(--sp-small);
   }
 }
 

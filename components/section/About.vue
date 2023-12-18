@@ -1,5 +1,25 @@
+<script setup lang="ts">
+const targetElement1 = ref<HTMLElement | null>(null)
+const targetElement2 = ref<HTMLElement | null>(null)
+const targetElement3 = ref<HTMLElement | null>(null)
+const targetElement4 = ref<HTMLElement | null>(null)
+const targetElement5 = ref<HTMLElement | null>(null)
+
+const elements = [
+  targetElement1,
+  targetElement2,
+  targetElement3,
+  targetElement4,
+  targetElement5,
+]
+
+onMounted(() => {
+  useIntersectionObserver().doObserve(elements)
+})
+</script>
+
 <template>
-  <SectionContainer>
+  <SectionContainer :sectionName="'ABOUT'">
     <div :class="$style.about_wrapper">
       <div :class="$style.about_description">
         <p>日本の1対1の接客や、おもてなし、こだわりのものづくりをライブという手段を通して1対nに届けるにはどうあるべきなのかを研究しています。</p>

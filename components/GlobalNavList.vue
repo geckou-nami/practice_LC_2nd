@@ -13,7 +13,6 @@
         <dd>関連リンク</dd>
       </dl>
     </div>
-    <div :class="$style.global_nav_bg" />
   </div>
 </template>
 
@@ -22,28 +21,6 @@
 .nav_list_container {
   width:100%;
   height:100vh;
-}
-
-.global_nav_bg {
-  width:50px; 
-  aspect-ratio: 1;
-  border-radius: 50%;
-  background-color: var(--transparent-white);
-  position: fixed;
-  top:0;
-  right:0;
-  transform: scale(0);
-  animation-name: GlobalNavOpen;
-  animation-duration: 0.8s;
-  animation-fill-mode: forwards;
-  animation-timing-function: ease-in-out;
-
-  /* &.active {
-    animation-name: GlobalNavClose;
-    animation-duration: 0.8s;
-    animation-fill-mode: forwards;
-    animation-timing-function: ease-in-out;
-  } */
 }
 
 .nav_list_wrapper {
@@ -77,30 +54,4 @@
     margin-bottom :var(--sp-large);
   }
 }
-
-@keyframes GlobalNavOpen {
-  0% {
-    opacity         : 0;
-    transform       : scale(0);
-    transform-origin: center center;
-  }
-  100% {
-    opacity         : 1;
-    transform       : scale(50);
-    transform-origin: center center;
-  }
-}
-
-/* @keyframes GlobalNavClose {
-  0% {
-    opacity         : 1;
-    transform       : scale(50);
-    transform-origin: center center;
-  }
-  100% {
-    opacity         : 0;
-    transform       : scale(0);
-    transform-origin: center center;
-  }
-} */
 </style>

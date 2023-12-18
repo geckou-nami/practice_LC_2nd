@@ -8,28 +8,45 @@ const toggleMenu = () => {
 
 <template>
   <div :class="$style.global_nav_container">
-    <div :class="$style.hamburger_circle">
-      <button 
-        :class="[$style.hamburger_menu, isActive ? $style.active : '']"
-        @click="toggleMenu">
-        <span></span> 
-        <span></span>
-        <span></span>
-      </button>
-    </div>
+    <div :class="[$style.hamburger_circle,isActive ? $style.active : '']" />
+    <button 
+      :class="[$style.hamburger_menu, isActive ? $style.active : '']"
+      @click="toggleMenu">
+      <span></span> 
+      <span></span>
+      <span></span>
+    </button>
   </div>
 </template>
 
 <style lang="scss" module>
 @use '~/assets/scss/mixin' as *;
+
+.global_nav_container {
+  display        : flex;
+  justify-content: center;
+  align-items    : center;
+  position       : relative;
+}
+
 .hamburger_circle {
-  width           : 64px;
-  height          : 64px;
-  border-radius   : 50%;
-  background-color: var(--white);
-  display         : flex;
-  justify-content : center;
-  align-items     : center;
+  width                    : 64px;
+  height                   : 64px;
+  aspect-ratio             : 1;
+  border-radius            : 50%;
+  background-color         : var(--white);
+  animation-name           : GlobalNavClose;
+  animation-duration       : 0.4s;
+  animation-fill-mode      : forwards;
+  animation-timing-function: ease-in-out;
+
+  &.active {
+    background-color         : var(--transparent-white);
+    animation-name           : GlobalNavOpen;
+    animation-duration       : 0.8s;
+    animation-fill-mode      : forwards;
+    animation-timing-function: ease-in-out;
+  }
 
   @include mediaScreen('tablet') {
     width : 50px;
@@ -37,6 +54,7 @@ const toggleMenu = () => {
   }
 }
 .hamburger_menu {
+  position: absolute;
   --opacity   : 1;
   --rotate    : 0;
   --translate : .5rem;
@@ -75,6 +93,23 @@ const toggleMenu = () => {
       translate: 0 var(--translate);
       rotate   : calc(var(--rotate) * -1);
     }
+  }
+}
+
+@keyframes GlobalNavOpen {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(100);
+  }
+}
+@keyframes GlobalNavClose {
+  0% {
+    transform: scale(100);
+  }
+  100% {
+    transform: scale(1);
   }
 }
 </style>
