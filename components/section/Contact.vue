@@ -32,7 +32,9 @@ onMounted(() => {
   flex-direction : column;
   justify-content: center;
   align-items    : center;
-  gap            : var(--sp-larger)
+  gap            : var(--sp-larger);
+  padding-top    : 50%;
+  margin-top     : -50%;
 }
 
 .contact_text {

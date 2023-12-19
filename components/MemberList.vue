@@ -51,30 +51,37 @@ const elements = [
 <style lang="scss" module>
 @use '~/assets/scss/mixin' as *;
 .member_list_wrapper {
-  width     : 100%;
-  display   : flex;
-  gap       : var(--sp-max);
-  justify-content: flex-start;
+  display        : flex;
+  flex-wrap      : wrap;
+  gap            : var(--sp-max);
+  justify-content: center;
 
   @include mediaScreen('tablet')  {
-    display: flex;
+    gap: var(--sp-larger);
+  }
+
+  @include mediaScreen('mobile')  {
+    display       : flex;
     flex-direction: column;
-    gap       : var(--sp-large);
+    gap           : var(--sp-large);
   }
 }
 
 .member_list_card {
-  width:calc((100% - var(--sp-max) * 2) / 3);
-  background-color: var(--dark-white);
-  border-radius   : var( --border-radius-base);
-  display         : flex;
-  flex-direction  : column;
+  background     : rgba(255, 255, 255, 0.60);
+  box-shadow     : var(--box-shadow);
+  backdrop-filter: blur(6px);
+  width          : calc((100% - var(--sp-max) * 2) / 3);
+  border-radius  : var( --border-radius-base);
+  display        : flex;
+  flex-direction : column;
   justify-content: flex-start;
-  align-items     : center;
-  text-align      : center;
-  gap             : var(--sp-larger);
-  padding         : calc(var(--sp-larger) * 1.5)  var(--sp-large);
-  position        : relative;
+  align-items    : center;
+  text-align     : center;
+  gap            : var(--sp-larger);
+  padding        : calc(var(--sp-larger) * 1.5)  var(--sp-large);
+  position       : relative;
+
   
   img {
     border-radius: 50%;
@@ -91,9 +98,13 @@ const elements = [
   }
 
   @include mediaScreen('tablet')  {
-    width:calc((100% - var(--sp-large) * 2) / 3);
-    top: 0 !important;
-    gap: calc(var(--sp-larger) * 1.5);
+    width : calc((100% - var(--sp-larger) * 2) / 2);
+  }
+
+  @include mediaScreen('mobile')  {
+    width: 100%;
+    top  : 0 !important;
+    gap  : calc(var(--sp-larger) * 1.5);
   }
 }
 

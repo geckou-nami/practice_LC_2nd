@@ -66,14 +66,14 @@ onMounted(() => {
   }
 
   > li {
-    width           : calc(100% - (var(--bv) * 8) * 3);
-    display         : flex;
-    justify-content : center;
-    background-color: var(--dark-white);
-    border-radius   : var(--border-radius-base);
-    box-shadow      : 0px 0px 64px 0px rgba(47, 7, 26, 0.20);
-    backdrop-filter : blur(8px);
-    position        : relative;
+    width          : calc(100% - (var(--bv) * 8) * 3);
+    display        : flex;
+    justify-content: center;
+    border-radius  : var(--border-radius-base);
+    background     : rgba(255, 255, 255, 0.60);
+    box-shadow     : var(--box-shadow);
+    backdrop-filter: blur(6px);
+    position       : relative;
 
     &:nth-child(1) {
       left:calc(calc(var(--bv) * 8) * 0);

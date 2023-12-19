@@ -27,7 +27,7 @@ console.log(members);
       <SectionContact id="CONTACT" />
       <SectionLinks id="LINKS" />
     </main>
-      <!-- <FlameMenu /> -->
+      <FlameMenu />
   </div>
 </template>
 

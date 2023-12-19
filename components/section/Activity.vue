@@ -84,17 +84,18 @@
 }
 
 .icon_circle {
-  background-color: var(--dark-white);
-  border-radius   : 50%;
-  width :calc(var(--bv) * 18);
-  height :calc(var(--bv) * 18);
-  aspect-ratio: 1/1;
-  display         : flex;
-  justify-content : center;
-  align-items     : center;
-  padding: var(--sp-large);
-  box-shadow: 0px 0px 64px 0px rgba(47, 7, 26, 0.20);
-  backdrop-filter: blur(8px);
+  border-radius  : 50%;
+  width          : calc(var(--bv) * 18);
+  height         : calc(var(--bv) * 18);
+  aspect-ratio   : 1/1;
+  display        : flex;
+  justify-content: center;
+  align-items    : center;
+  padding        : var(--sp-large);
+  background     : rgba(255, 255, 255, 0.60);
+  box-shadow     : var(--box-shadow);
+  backdrop-filter: blur(6px);
+  mix-blend-mode : luminosity;
 
   @include mediaScreen('tablet') {
     width :calc(var(--bv) * 26);

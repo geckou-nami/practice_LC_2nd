@@ -18,23 +18,27 @@
 @use '~/assets/scss/mixin' as *;
 .flame_container {
   width   : 100vw;
+  height :100vh;
   position: relative;
-
-  @include mediaScreen('tablet') {
-    padding:var(--border-size );
-  }
 }
 
 .frame {
-  width : calc(100% - (var(--bv) * 16));
+  width        : calc(100% - (var(--bv) * 16));
   height       : calc(100% - (var(--bv) * 16));
   border       : var(--border-size) solid var(--white);
   border-radius: var(--border-radius-base);
   position     : fixed;
   top          : calc(var(--bv) * 8);
   left         : calc(var(--bv) * 8);
-  z-index: var(--z-index-nav);
+  z-index      : var(--z-index-nav);
   pointer-events: none;
+
+    @include mediaScreen('tablet') {
+      width : calc(100% - (var(--bv) * 6));
+      height: calc(100% - (var(--bv) * 6));
+      top   : calc(var(--bv) * 3);
+      left  : calc(var(--bv) * 3);
+  }
 }
 
 .frame_logo {

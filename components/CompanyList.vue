@@ -59,13 +59,15 @@ const props = defineProps<Props>()
   }
 
   .company_list_circle{
-    border-radius   : 50%;
-    aspect-ratio    : 1/1;
-    background-color: var(--dark-white);
-    display         : flex;
-    justify-content : center;
-    align-items     : center;
-    padding: calc(var(--sp-large) * 1.5);
+    border-radius  : 50%;
+    aspect-ratio   : 1/1;
+    background     : rgba(255, 255, 255, 0.60);
+    box-shadow     : var(--box-shadow);
+    backdrop-filter: blur(6px);
+    display        : flex;
+    justify-content: center;
+    align-items    : center;
+    padding        : calc(var(--sp-large) * 1.5);
 
     img {   
       width: 100%;

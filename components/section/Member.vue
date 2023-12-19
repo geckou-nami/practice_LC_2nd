@@ -12,11 +12,9 @@ onMounted(() => {
 </script>
 
 <template>
-  <SectionContainer 
-      :sectionName="'MEMBER'"
-      :class="$style.member_section_container">
-    <div :class="$style.member_wrapper">
-      <div :class="$style.member_card">
+  <SectionContainer :sectionName="'MEMBER'">
+    <div :class="$style.member_container" >
+      <div :class="$style.member_wrapper">
         <img src="~/assets/images/chairman.webp" alt="会長の写真" :class="$style.member_pic">
         <div :class="$style.member_contents">
           <h4>会長／武者 慶佑</h4>
@@ -26,31 +24,28 @@ onMounted(() => {
             また、2013年より日本グミ協会を発足し、Twitter、Instagramのフォロワー数延べ20万人の国内最大のグミのコミュニティを運営し、グミの日のプロデュースなどを行う。</p>
         </div>
       </div>
-    </div>
     <MemberList :grandChildMembers="childMembers" />
     <CompanyList :companies="companies" />
+    </div>
   </SectionContainer>
 </template>
 
 <style lang="scss" module>
 @use '~/assets/scss/mixin' as *;
 
-.member_section_container {
+.member_container {
   display: flex;
   flex-direction: column;
   gap:calc(var(--bv) * 40);
 }
-.member_wrapper {
-  width:100%;
-}
 
-.member_card {
+.member_wrapper {
   width          : 100%;
   display        : flex;
-  border-radius  : var(  --border-radius-base);
-  background     : var(--dark-white);
-  box-shadow     : 0px 0px 64px 0px rgba(47, 7, 26, 0.20);
-  backdrop-filter: blur(8px);
+  border-radius  : var(--border-radius-base);
+  background     : rgba(255, 255, 255, 0.60);
+  box-shadow     : var(--box-shadow);
+  backdrop-filter: blur(6px);
   overflow       : hidden;
 
   @include mediaScreen('tablet') {
@@ -61,7 +56,7 @@ onMounted(() => {
   img {
     flex          : 0 0 38%;
     width         : 38%;
-    object-fit    : contain;
+    object-fit    : cover;
     mix-blend-mode: darken;
     aspect-ratio  : var(--golden-ratio);
 
