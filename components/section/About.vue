@@ -13,9 +13,9 @@ const elements = [
   targetElement5,
 ]
 
-onMounted(() => {
-  useIntersectionObserver().doObserve(elements)
-})
+// onMounted(() => {
+//   useIntersectionObserver().doObserve(elements)
+// })
 </script>
 
 <template>

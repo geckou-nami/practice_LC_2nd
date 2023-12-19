@@ -47,7 +47,6 @@ const createObserver = (elements: any[]) => {
     }
   })
 }
-
 </script>
 
 <template>
@@ -60,6 +59,7 @@ const createObserver = (elements: any[]) => {
 
 <style lang="scss" module>
 @use '~/assets/scss/mixin' as *;
+
 .heading {
   display        : flex;
   justify-content: center;
@@ -69,17 +69,16 @@ const createObserver = (elements: any[]) => {
   position       : fixed;
   top            : 0;
   left           : 0;
-  /* opacity        : 0; */
-  /* filter         : blur(200px); */
-  /* transition     : all .6s; */
+  opacity        : 0;
+  filter         : blur(200px);
+  transition     : all .6s;
 
   /* @include mediaScreen('mobile') {
     left: -8em;
   } */
 
     > h2 {
-      /* color         : rgba(255, 255, 255, .1); */
-      color:black;
+      color         : rgba(255, 255, 255, .1);
       font-size     : var(--fs-heading);
       font-weight   : bold;
       font-family   : var(--font-family-rounded);
@@ -88,13 +87,12 @@ const createObserver = (elements: any[]) => {
 
       /* @include mediaScreen('mobile') {
         transform: rotate(90deg);
-      }
-    } */
-
-    /* &.display {
-      filter : blur(0px);
-      opacity: 1;
-    } */
+      } */
+    }
+  
+  &.display {
+    filter : blur(0px);
+    opacity: 1;
   }
 }
 </style>

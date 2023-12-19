@@ -17,10 +17,6 @@
       description:'田中 哲',
     },
   ]
-
-  onMounted(() => {
-  useIntersectionObserver().doObserve(elements)
-})
 </script>
 
 <template>

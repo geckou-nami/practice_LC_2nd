@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button><a :class="$style.hero_button" href="#contact">▶︎ CONTACT US!</a></button>
+    <button><a :class="$style.hero_button" href="#CONTACT">▶︎ CONTACT US!</a></button>
   </div>
 </template>
 

@@ -3,13 +3,13 @@
     <div :class="$style.frame" />
     <img :class="$style.frame_logo" src="~/assets/images/mainlogo.png" alt="日本ライブコマース協会">
     <div :class="$style.menu_box">
-        <GlobalNavButton />
-      <div :class="$style.sns_icon">
+      <GlobalNavButton />
+      <a :class="$style.sns_icon">
         <IconTwitter />
-      </div>
-      <div :class="$style.sns_icon">
+      </a>
+      <a :class="$style.sns_icon">
         <IconNote />
-      </div>
+      </a>
     </div>
   </div>
 </template>
@@ -24,6 +24,7 @@
     padding:var(--border-size );
   }
 }
+
 .frame {
   width : calc(100% - (var(--bv) * 16));
   height       : calc(100% - (var(--bv) * 16));
@@ -37,7 +38,7 @@
 }
 
 .frame_logo {
-  width   : 480px;
+  width   : 420px;
   height  : 90px;
   position: fixed;
   top     : calc(var(--bv) * 12);
@@ -58,7 +59,7 @@
   flex-direction: column;
   gap           : var(--sp-large);
   align-items   : flex-end;
-  z-index       : var(--z-index-nav);
+  z-index       : var(--z-index-tooltip);
 
   @include mediaScreen('tablet') {
     gap: var(--sp-small);

@@ -4,13 +4,6 @@ const companies = await fetch('/json/companies.json').then(res => res.json())
 
 console.log(members);
 
-// useSeoMeta({
-//   title        : () => `title: ${head.value.title}`,
-//   description  : () => `description: ${head.value.description}`,
-//   ogTitle      : () => `og:title: ${head.value.title}`,
-//   ogDescription: () => `og:description: ${head.value.description}`,
-// })
-
 // const scrollToTop = () => {
 //   window.scrollTo({top: 0, left: 0, behavior: 'smooth'})
 // }
@@ -21,19 +14,20 @@ console.log(members);
   <div>
     <GradientBackground />
     <WavyDecoration />
-    <FlameMenu />
-    <SectionHero />
+    <SectionHero id="HERO" />
     <main :class="$style.main_container">
-      <SectionAbout />
-      <SectionNews />
+      <SectionAbout id="ABOUT" />
+      <SectionNews id="NEWS" />
       <SectionMember 
+        id="MEMBERS"
         :childMembers="members"
         :companies="companies"
       />
-      <SectionActivity />
-      <SectionContact id="contact"/>
-      <SectionLinks />
+      <SectionActivity id="ACTIVITY" />
+      <SectionContact id="CONTACT" />
+      <SectionLinks id="LINKS" />
     </main>
+      <!-- <FlameMenu /> -->
   </div>
 </template>
 

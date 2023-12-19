@@ -8,10 +8,10 @@ const props = defineProps<Props>()
 
 <template>
   <section>
-    <SectionHeading
+    <!-- <SectionHeading
       v-if="sectionName"
       :text="sectionName"
-      />
+      /> -->
     <div :class="$style.section_container">
       <slot />
     </div>

@@ -4,11 +4,13 @@ const isActive = ref(false);
 const toggleMenu = () => {
   isActive.value = !isActive.value;
 };
+
+
 </script>
 
 <template>
   <div :class="$style.global_nav_container">
-    <div :class="[$style.hamburger_circle,isActive ? $style.active : '']" />
+    <div :class="[$style.hamburger_circle, isActive ? $style.active : '']" />
     <button 
       :class="[$style.hamburger_menu, isActive ? $style.active : '']"
       @click="toggleMenu">
@@ -38,7 +40,6 @@ const toggleMenu = () => {
   animation-name           : GlobalNavClose;
   animation-duration       : 0.4s;
   animation-fill-mode      : forwards;
-  animation-timing-function: ease-in-out;
 
   &.active {
     background-color         : var(--transparent-white);
