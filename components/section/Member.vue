@@ -5,10 +5,14 @@ type Props = {
 }
 
 const props = defineProps<Props>()
+
+// onMounted(() => {
+//   useIntersectionObserver().doObserve(elements)
+// })
 </script>
 
 <template>
-  <SectionContainer :sectionName="'MEMBER'">
+  <SectionContainer :sectionName="'MEMBERS'">
     <div :class="$style.member_container" >
       <div :class="$style.member_wrapper">
         <img src="~/assets/images/chairman.webp" alt="会長の写真" :class="$style.member_pic">

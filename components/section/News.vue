@@ -1,4 +1,8 @@
 <script setup lang="ts">
+
+// onMounted(() => {
+//   useIntersectionObserver().doObserve(elements)
+// })
 </script>
 
 <template>

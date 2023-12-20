@@ -2,6 +2,7 @@
   <div :class="$style.flame_container">
     <div :class="$style.frame" />
     <img :class="$style.frame_logo" src="~/assets/images/mainlogo.png" alt="日本ライブコマース協会">
+    <GlobalNavList />
     <div :class="$style.menu_box">
       <GlobalNavButton />
       <a :class="$style.sns_icon">

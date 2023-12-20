@@ -83,7 +83,7 @@ const createObserver = (elements: any[]) => {
     > h2 {
       color         : rgba(255, 255, 255, .1);
       font-size     : var(--fs-heading);
-      font-weight   : bold;
+      font-weight   : 500;
       font-family   : var(--font-family-rounded);
       letter-spacing: var(--letter-spacing-narrow);
       transform     : rotate(-12deg);

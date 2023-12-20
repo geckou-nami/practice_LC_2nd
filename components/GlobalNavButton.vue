@@ -33,14 +33,14 @@ const toggleMenu = () => {
 }
 
 .hamburger_circle {
-  width                    : 64px;
-  height                   : 64px;
-  aspect-ratio             : 1;
-  border-radius            : 50%;
-  background-color         : var(--white);
-  animation-name           : GlobalNavClose;
-  animation-duration       : 0.4s;
-  animation-fill-mode      : forwards;
+  width              : calc(var(--bv) * 8);
+  height             : calc(var(--bv) * 8);
+  aspect-ratio       : 1;
+  border-radius      : 50%;
+  background-color   : var(--white);
+  animation-name     : GlobalNavClose;
+  animation-duration : 0.4s;
+  animation-fill-mode: forwards;
 
   &.active {
     background-color         : var(--transparent-white);
