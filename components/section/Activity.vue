@@ -17,9 +17,6 @@
     },
   ]
 
-  onMounted(() => {
-  useIntersectionObserver().doObserve(elements)
-})
 </script>
 
 <template>

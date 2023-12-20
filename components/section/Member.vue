@@ -5,10 +5,6 @@ type Props = {
 }
 
 const props = defineProps<Props>()
-
-onMounted(() => {
-  useIntersectionObserver().doObserve(elements)
-})
 </script>
 
 <template>

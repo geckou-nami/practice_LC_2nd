@@ -3,9 +3,8 @@ const isActive = ref(false);
 
 const toggleMenu = () => {
   isActive.value = !isActive.value;
-};
-
-
+  console.log(isActive.value);
+}
 </script>
 
 <template>
@@ -13,7 +12,9 @@ const toggleMenu = () => {
     <div :class="[$style.hamburger_circle, isActive ? $style.active : '']" />
     <button 
       :class="[$style.hamburger_menu, isActive ? $style.active : '']"
-      @click="toggleMenu">
+      @click="toggleMenu"
+    >
+    {{ isActive }}
       <span></span> 
       <span></span>
       <span></span>

@@ -2,12 +2,9 @@
 const members = await fetch('/json/members.json').then(res => res.json())
 const companies = await fetch('/json/companies.json').then(res => res.json())
 
-console.log(members);
-
 // const scrollToTop = () => {
 //   window.scrollTo({top: 0, left: 0, behavior: 'smooth'})
 // }
-
 </script>
 
 <template>
@@ -27,7 +24,7 @@ console.log(members);
       <SectionContact id="CONTACT" />
       <SectionLinks id="LINKS" />
     </main>
-      <FlameMenu />
+    <FlameMenu />
   </div>
 </template>
 

@@ -39,7 +39,9 @@ const createObserver = (elements: any[]) => {
       const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
+            console.log(entry.target.id);
             currentSectionId.value = entry.target.id
+            console.log(currentSectionId.value);
           }
         })
       }, options)
@@ -52,7 +54,8 @@ const createObserver = (elements: any[]) => {
 <template>
   <div :class="[$style.heading, currentSectionId === text ? $style.display : '']">
     <h2>
-      {{ text }}
+      currentSectionId: {{ currentSectionId }}
+      text: {{ text }}
     </h2>
   </div>
 </template>
@@ -69,7 +72,7 @@ const createObserver = (elements: any[]) => {
   position       : fixed;
   top            : 0;
   left           : 0;
-  opacity        : 0;
+  /* opacity        : 0; */
   filter         : blur(200px);
   transition     : all .6s;
 
