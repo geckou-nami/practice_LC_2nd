@@ -1,6 +1,7 @@
 <script setup lang="ts">
 type Props = {
-  sectionName: string,
+  sectionName: string
+  isCurrent: boolean
 }
 
 const props = defineProps<Props>()
@@ -11,6 +12,7 @@ const props = defineProps<Props>()
     <SectionHeading
       v-if="sectionName"
       :text="sectionName"
+      :isCurrent="isCurrent"
       />
     <div :class="$style.section_container">
       <slot />

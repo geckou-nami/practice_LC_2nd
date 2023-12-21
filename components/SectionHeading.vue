@@ -1,61 +1,17 @@
 <script setup lang="ts">
 type Props = {
-  text: string,
+  text: string
+  isCurrent: boolean
 }
 
 const props = defineProps<Props>()
-const currentSectionId = ref('')
 
-onMounted(async() => {
-  const HeroSectionEl: HTMLElement | null = document.getElementById('HERO')
-  const AboutSectionEl: HTMLElement | null = document.getElementById('ABOUT')
-  const NewsSectionEl: HTMLElement | null = document.getElementById('NEWS')
-  const MembersSectionEl: HTMLElement | null = document.getElementById('MEMBERS')
-  const ActivitySectionEl: HTMLElement | null = document.getElementById('ACTIVITY')
-  const ContactSectionEl: HTMLElement | null = document.getElementById('CONTACT')
-  const LinksSectionEl: HTMLElement | null = document.getElementById('LINKS')
-  const elements = [
-    HeroSectionEl,
-    AboutSectionEl,
-    NewsSectionEl,
-    MembersSectionEl,
-    ActivitySectionEl,
-    ContactSectionEl,
-    LinksSectionEl,
-  ].filter(Boolean)
-
-  createObserver(elements)
-})
-
-const createObserver = (elements: any[]) => {
-  const options = {
-    root      : null,
-    rootMargin: '0px',
-    threshold : 0.2,
-  }
-
-  elements.forEach((element: HTMLElement | null) => {
-    if (element) {
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            console.log(entry.target.id);
-            currentSectionId.value = entry.target.id
-            console.log(currentSectionId.value);
-          }
-        })
-      }, options)
-      observer.observe(element)
-    }
-  })
-}
 </script>
 
 <template>
-  <div :class="[$style.heading, currentSectionId === text ? $style.display : '']">
+  <div :class="[$style.heading, isCurrent ? $style.display : '']">
     <h2>
-      currentSectionId: {{ currentSectionId }}
-      text: {{ text }}
+      {{ text }}
     </h2>
   </div>
 </template>
@@ -72,7 +28,7 @@ const createObserver = (elements: any[]) => {
   position       : fixed;
   top            : 0;
   left           : 0;
-  /* opacity        : 0; */
+  opacity        : 0;
   filter         : blur(200px);
   transition     : all .6s;
 
