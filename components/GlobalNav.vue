@@ -1,5 +1,10 @@
+<script setup lang="ts">
+
+
+</script>
+
 <template>
-  <div :class="$style.flame_container">
+  <div :class="$style.global_nav_container">
     <div :class="$style.frame" />
     <img :class="$style.frame_logo" src="~/assets/images/mainlogo.png" alt="日本ライブコマース協会">
     <div :class="$style.menu_box">
@@ -16,7 +21,7 @@
 
 <style lang="scss" module>
 @use '~/assets/scss/mixin' as *;
-.flame_container {
+.global_nav_container {
   width   : 100vw;
   height :100vh;
   position: relative;
@@ -67,6 +72,8 @@
 
   @include mediaScreen('tablet') {
     gap: var(--sp-small);
+    top           : calc(var(--bv) * 7);
+    right         : calc(var(--bv) * 7);
   }
 }
 

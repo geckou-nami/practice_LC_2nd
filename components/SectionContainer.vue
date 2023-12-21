@@ -1,7 +1,7 @@
 <script setup lang="ts">
 type Props = {
   sectionName: string
-  isCurrent: boolean
+  isCurrent:boolean
 }
 
 const props = defineProps<Props>()

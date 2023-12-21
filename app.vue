@@ -86,7 +86,7 @@ const createObserver = (elements: any[]) => {
         :isCurrent="currentSectionId === 'LINKS'"
       />
     </main>
-    <FlameMenu />
+    <GlobalNav />
   </div>
 </template>
 

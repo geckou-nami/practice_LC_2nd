@@ -5,6 +5,25 @@ const toggleMenu = () => {
   isActive.value = !isActive.value;
   console.log(isActive.value);
 }
+
+const links = [
+  {
+    name: 'NEWS',
+    text: 'お知らせ',
+  },
+  {
+    name: 'MEMBERS',
+    text: '日本ライブコマース協会 会員',
+  },
+  {
+    name: 'ACTIVITY',
+    text: '活動内容',
+  },
+  {
+    name: 'LINKS',
+    text: '関連リンク',
+  },
+]
 </script>
 
 <template>
@@ -19,6 +38,17 @@ const toggleMenu = () => {
       <span></span>
       <span></span>
     </button>
+    <div :class="[$style.nav_list_wrapper, isActive ? $style.active : '']">
+      <h1><img src="~/assets/images/logo_black.webp" alt="日本ライブコマース協会" :class="$style.main_logo"></h1>
+      <dl 
+        :class="$style.nav_list"
+        v-for="link in links"
+        :key="link.name"
+      >
+        <dt>{{ link.name }}</dt>
+        <dd>{{ link.text }}</dd>
+      </dl>
+    </div>
   </div>
 </template>
 
@@ -65,6 +95,7 @@ const toggleMenu = () => {
   width       : 50px;
   aspect-ratio: 1;
   cursor      : pointer;
+  z-index: 100;
 
   @include mediaScreen('tablet') {
     width : 40px;
@@ -95,6 +126,51 @@ const toggleMenu = () => {
       translate: 0 var(--translate);
       rotate   : calc(var(--rotate) * -1);
     }
+  }
+}
+
+
+.nav_list_wrapper {
+  width          : 100%;
+  height         : 100vh;
+  display        : flex;
+  flex-direction : column;
+  align-items    : flex-start;
+  gap            : var(--sp-large);
+  padding-left   : calc(var(--bv) * 15);
+  padding-top:calc(var(--bv) * 15);
+  position       : fixed;
+  top            : 0;
+  left           : 0;
+  opacity        : 0;
+
+  &.active {
+    opacity  : 1;
+    transition: all .5s;
+    transition-delay: .3s;
+  }
+
+  @include mediaScreen('tablet') {
+    padding-left: calc(var(--bv) * 10);
+    padding-top : calc(var(--bv) * 10);
+  }
+}
+
+.main_logo {
+  width        : calc(var(--bv) * 65);
+  margin-bottom: var(--sp-medium);
+}
+
+.nav_list {
+  dt {
+    font-family  : var(--font-family-rounded);
+    font-size    : var(--fs-max);
+    font-weight  : bold;
+    color        : var(--pink);
+  }
+
+  dd {
+    color        : var(--black);
   }
 }
 
