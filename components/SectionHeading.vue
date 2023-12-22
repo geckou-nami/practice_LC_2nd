@@ -32,9 +32,9 @@ const props = defineProps<Props>()
   filter         : blur(200px);
   transition     : all .6s;
 
-  /* @include mediaScreen('mobile') {
+  @include mediaScreen('mobile') {
     left: -8em;
-  } */
+  }
 
     > h2 {
       color         : rgba(255, 255, 255, .1);
@@ -44,9 +44,9 @@ const props = defineProps<Props>()
       letter-spacing: var(--letter-spacing-narrow);
       transform     : rotate(-12deg);
 
-      /* @include mediaScreen('mobile') {
+      @include mediaScreen('mobile') {
         transform: rotate(90deg);
-      } */
+      }
     }
   
   &.display {

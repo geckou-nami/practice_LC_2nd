@@ -1,12 +1,15 @@
 <script setup lang="ts">
+const props = defineProps<{
+  isCurrent : boolean
+}>()
 
-// onMounted(() => {
-//   useIntersectionObserver().doObserve(elements)
-// })
 </script>
 
 <template>
-  <SectionContainer :sectionName="'CONTACT'">
+  <SectionContainer 
+    sectionName='CONTACT'
+    :isCurrent="isCurrent"
+  >
     <div :class="$style.contact_wrapper">
       <div :class="$style.contact_text">
         執筆・セミナーなどなどライブコマースに関わるお仕事の依頼、<br>

@@ -74,6 +74,7 @@ const createObserver = (elements: any[]) => {
         :companies="companies"
       />
       <SectionActivity 
+        :class="$style.section_activity"
         id="ACTIVITY"
         :isCurrent="currentSectionId === 'ACTIVITY'"
       />
@@ -93,5 +94,10 @@ const createObserver = (elements: any[]) => {
 <style lang="scss" module>
 .main_container {
   width  : 100%;
+}
+
+.section_activity {
+  margin-top: calc(var(--bv) * -40);
+  /* padding-top: calc(var(--bv) * -40); */
 }
 </style>

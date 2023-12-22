@@ -1,36 +1,39 @@
 <script setup lang="ts">
+const props = defineProps<{
+  isCurrent: boolean
+}>()
 
-// onMounted(() => {
-//   useIntersectionObserver().doObserve(elements)
-// })
 </script>
 
 <template>
-  <SectionContainer :sectionName="'NEWS'">
+  <SectionContainer
+    sectionName="NEWS"
+    :isCurrent="isCurrent"
+  >
     <div :class="$style.news_wrapper">
       <ul :class="$style.news_list">
-        <li>
+        <li :class="[isCurrent ? $style.active : '']">
           <img src="~/assets/images/00002.png" alt="IMAGE" :class="$style.image">
           <div :class="$style.news_contents">
             <h4 :class="$style.news_text">記事タイトル記事タイトル記事タイトル記事タイトル記事タイトル記事タイトル</h4>
             <time>2023.3.3</time>
           </div>
         </li>
-        <li>
+        <li :class="[isCurrent ? $style.active : '']">
           <img src="~/assets/images/00003.png" alt="IMAGE" :class="$style.image">
           <div :class="$style.news_contents">
             <h4 :class="$style.news_text">記事タイトル記事タイトル記事タイトル記事タイトル記事タイトル記事タイトル</h4>
             <time>2023.3.3</time>
           </div>
         </li>
-        <li>
+        <li :class="[isCurrent ? $style.active : '']">
           <img src="~/assets/images/00004.png" alt="IMAGE" :class="$style.image">
           <div :class="$style.news_contents">
             <h4 :class="$style.news_text">記事タイトル記事タイトル記事タイトル記事タイトル記事タイトル記事タイトル</h4>
             <time>2023.3.3</time>
           </div>
         </li>
-        <li>
+        <li :class="[isCurrent ? $style.active : '']">
           <img src="~/assets/images/00005.png" alt="IMAGE" :class="$style.image">
           <div :class="$style.news_contents">
             <h4 :class="$style.news_text">記事タイトル記事タイトル記事タイトル記事タイトル記事タイトル記事タイトル</h4>
@@ -58,8 +61,8 @@
 
 
   @include mediaScreen('tablet') {
-    display: flex;
-    flex-wrap: wrap;
+    display       : flex;
+    flex-wrap     : wrap;
     flex-direction: row;
     gap           : var(--sp-medium);
     padding       : 0 ;
@@ -91,6 +94,25 @@
       left:calc(calc(var(--bv) * 8) * 3);
     }
 
+    &.active {
+      opacity            : 0;
+      animation-name     : slideInLeft;
+      animation-duration : .3s;
+      animation-fill-mode: forwards;
+
+      &:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+
+      &:nth-child(3) {
+        animation-delay: 0.4s;
+      }
+
+      &:nth-child(4) {
+        animation-delay: 0.6s;
+      }
+    }
+
     @include mediaScreen('tablet') {
       display       : flex;
       flex-direction: column;
@@ -102,7 +124,6 @@
       }
     }
   } 
-
 }
 
 .image {
@@ -134,6 +155,18 @@
 
   @include mediaScreen('tablet') {
     padding        : var(--sp-medium);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity  : 0;
+    transform: translateX(-36px);
+  }
+
+  to {
+    opacity  : 1;
+    transform: translateX(0px);
   }
 }
 </style>

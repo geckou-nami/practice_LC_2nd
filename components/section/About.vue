@@ -1,35 +1,28 @@
 <script setup lang="ts">
-const targetElement1 = ref<HTMLElement | null>(null)
-const targetElement2 = ref<HTMLElement | null>(null)
-const targetElement3 = ref<HTMLElement | null>(null)
-const targetElement4 = ref<HTMLElement | null>(null)
-const targetElement5 = ref<HTMLElement | null>(null)
+type Props = {  
+  isCurrent:boolean
+}
 
-const elements = [
-  targetElement1,
-  targetElement2,
-  targetElement3,
-  targetElement4,
-  targetElement5,
-]
-
-// onMounted(() => {
-//   useIntersectionObserver().doObserve(elements)
-// })
+const props = defineProps<Props>()
 </script>
 
 <template>
-  <SectionContainer :sectionName="'ABOUT'">
+  <SectionContainer 
+    :sectionName="'ABOUT'"
+    :isCurrent="isCurrent"
+  >
     <div :class="$style.about_wrapper">
-      <div :class="$style.about_description">
+      <div :class="[$style.about_description, isCurrent ? $style.active : '']">
         <p>日本の1対1の接客や、おもてなし、こだわりのものづくりをライブという手段を通して1対nに届けるにはどうあるべきなのかを研究しています。</p>
         <p>ライブは、コマース機能に限らず、企業やブランドと生活者の距離を縮め、コミュニティの形成や強化を行うことができる有効なマーケティング手法でもあります。</p>
       </div>
-      <div :class="$style.about_heading">
+      <div :class="[$style.about_heading, isCurrent ? $style.active : '']">
         デジタルマーケティング領域において、今後多くの企業が取り入れるべき、ライブエンゲージメントを定義し、マーケティング業界への貢献を目指します。
       </div>
-      <img src="~/assets/images/about_styling.png" alt="参考写真" :class="$style.styling_img">
-      <img src="~/assets/images/about_live.png" alt="参考写真" :class="$style.live_img">
+      <img src="~/assets/images/about_styling.png" alt="参考写真" 
+        :class="[$style.styling_img, isCurrent ? $style.active : '']">
+      <img src="~/assets/images/about_live.png" alt="参考写真" 
+        :class="[$style.live_img, isCurrent ? $style.active : '']">
     </div>
   </SectionContainer>
 </template>
@@ -63,7 +56,14 @@ const elements = [
   display        : flex;
   flex-direction : column;
   justify-content: flex-end;
-  gap: calc(var(--sp) * 5);
+  gap            : calc(var(--sp) * 5);
+
+  &.active {
+    opacity            : 0;
+    animation-name     : slideInLeft;
+    animation-duration : .3s;
+    animation-fill-mode: forwards;
+  }
 }
 
 .about_heading {
@@ -73,6 +73,14 @@ const elements = [
   margin-top  : 60px;
   margin-right: 90px;
 
+  &.active {
+    opacity            : 0;
+    animation-name     : slideInLeft;
+    animation-duration : .3s;
+    animation-delay    : .4s;
+    animation-fill-mode: forwards;
+  }
+
   @include mediaScreen('tablet') {
     margin  : 0;;
   }
@@ -80,14 +88,53 @@ const elements = [
 
 .styling_img {
   grid-area:styling;
+
+  &.active {
+    transform          : scale(.8);
+    animation-name     : popUp;
+    animation-duration : .5s;
+    animation-fill-mode: forwards;
+  }
 }
 
 .live_img {
   grid-area:live;
+
+  &.active {
+    transform          : scale(.8);
+    animation-name     : popUp;
+    animation-duration : .5s;
+    animation-fill-mode: forwards;
+    animation-delay    : .4s;
+  }
 
   @include mediaScreen('tablet') {
     margin-top  : calc(var(--bv) * 7);
   }
 }
 
+@keyframes slideInLeft {
+  from {
+    opacity  : 0;
+    transform: translateX(-36px);
+  }
+
+  to {
+    opacity  : 1;
+    transform: translateX(0px);
+  }
+}
+@keyframes popUp {
+  0% {
+    transform: scale(.8);
+  }
+
+  80% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
 </style>

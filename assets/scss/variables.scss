@@ -1,4 +1,4 @@
-@use 'functions' as *;
+  @use 'functions' as *;
 
 $maxViewport: 1440;
 $minViewport: 740;
@@ -19,7 +19,7 @@ $minViewport: 740;
   --text-color        : var(--white);
   --border-color      : var(--white);
   --box-shadow        : 0px 0px 64px rgba(47, 7, 26, 0.2);
-  --transparent-white :rgba(255, 255, 255, 0.80);
+  --transparent-white :rgba(255, 255, 255, 0.6);
 
   // FONT
   --fs-medium            : #{calcClamp(14, 16, $minViewport, $maxViewport)};

@@ -2,17 +2,18 @@
 type Props = {
   childMembers: {name: string, text: string, image: string}[]
   companies: {image: string, name: string, link: string}[]
+  isCurrent: boolean
 }
 
 const props = defineProps<Props>()
 
-// onMounted(() => {
-//   useIntersectionObserver().doObserve(elements)
-// })
 </script>
 
 <template>
-  <SectionContainer :sectionName="'MEMBERS'">
+  <SectionContainer 
+    :sectionName="'MEMBERS'"
+    :isCurrent="isCurrent"
+  >
     <div :class="$style.member_container" >
       <div :class="$style.member_wrapper">
         <img src="~/assets/images/chairman.webp" alt="会長の写真" :class="$style.member_pic">
@@ -24,7 +25,10 @@ const props = defineProps<Props>()
             また、2013年より日本グミ協会を発足し、Twitter、Instagramのフォロワー数延べ20万人の国内最大のグミのコミュニティを運営し、グミの日のプロデュースなどを行う。</p>
         </div>
       </div>
-    <MemberList :grandChildMembers="childMembers" />
+    <MemberList 
+      :grandChildMembers="childMembers"
+      :isCurrent="isCurrent"
+    />
     <CompanyList :companies="companies" />
     </div>
   </SectionContainer>
@@ -34,9 +38,9 @@ const props = defineProps<Props>()
 @use '~/assets/scss/mixin' as *;
 
 .member_container {
-  display: flex;
+  display       : flex;
   flex-direction: column;
-  gap:calc(var(--bv) * 40);
+  gap           : calc(var(--bv) * 40);
 }
 
 .member_wrapper {
@@ -49,7 +53,7 @@ const props = defineProps<Props>()
   overflow       : hidden;
 
   @include mediaScreen('tablet') {
-    display: flex;
+    display       : flex;
     flex-direction: column;
   }
 
@@ -76,7 +80,7 @@ const props = defineProps<Props>()
   flex-direction : column;
   justify-content: center;
   gap            : var(--sp-large);
-  padding        : calc(var(--sp-larger) * 1.5)  var(--sp-larger);
+  padding        : calc(var(--sp-larger) * 2.4)  var(--sp-larger);
   color          : var(--black);
 
   p {
@@ -86,7 +90,7 @@ const props = defineProps<Props>()
 
   @include mediaScreen('tablet') {
     margin-top: calc(var(--sp-max) * 2);
-    padding : var(--sp-max)  var(--sp-large);
+    padding   : var(--sp-max)  var(--sp-large);
   }
 }
 

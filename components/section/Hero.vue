@@ -55,8 +55,12 @@
 }
 
 .hero_img {
-  position: relative;
-  width:clamp(10.625rem, -1.475rem + 41.37vw, 25rem);
+  position           : relative;
+  width              : calc(100% / 3 - (var(--bv) * 11));
+  opacity            : 0;
+  animation-name     : slideInLeft;
+  animation-duration : .3s;
+  animation-fill-mode: forwards;
 
   &::before,
   &::after {
@@ -80,8 +84,21 @@
     mix-blend-mode: exclusion;
   }
   
+  &:nth-child(2){
+    animation-delay: 0.1s;
+  }
+  &:nth-child(3){
+    animation-delay: 0.2s;
+  }
   &:nth-child(4){
     margin-left: calc(var(--sp) * -8);
+    animation-delay: 0.3s;
+  }
+  &:nth-child(5){
+    animation-delay: 0.4s;
+  }
+  &:nth-child(6){
+    animation-delay: 0.5s;
   }
 
   @include mediaScreen('tablet') {
@@ -92,8 +109,8 @@
   }
     
 
-  @include mediaScreen('mobile') {
-    width:clamp(10.625rem, -4.536rem + 62.2vw, 18.75rem);
+  @include mediaScreen('tablet') {
+    width:calc(100% / 2 - (var(--bv) * 2));
 
     &:nth-child(1) {
       margin-left: calc(var(--sp) * -6);
@@ -132,5 +149,17 @@
   top      : 50%;
   left     : 50%;
   transform: translate(-50%,-50%);  
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity  : 0;
+    transform: translateX(-36px);
+  }
+
+  to {
+    opacity  : 1;
+    transform: translateX(0px);
+  }
 }
 </style>

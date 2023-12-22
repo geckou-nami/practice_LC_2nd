@@ -1,6 +1,7 @@
 <script setup lang="ts">
 type Props = {
   grandChildMembers: {name: string, text: string, image: string}[]
+  isCurrent: boolean
 }
 
 const props = withDefaults(defineProps<Props>(), {})
@@ -8,11 +9,6 @@ const targetElement = ref<HTMLElement | null>(null)
 const elements = [
   targetElement,
 ]
-
-// onMounted(() => {
-//   useIntersectionObserver().doObserve(elements)
-// })
-
 </script>
 
 <template>
@@ -23,7 +19,10 @@ const elements = [
     <li 
       v-for="(member, index) in grandChildMembers"
       :key="member.name"
-      :class="$style.member_list_card"
+      :class="[$style.member_list_card, isCurrent ? $style.active : '']"
+      :style="{
+        animationDelay: `${index * .1}s`,
+      }"
     >
       <img 
         v-if="member.image"
@@ -78,11 +77,16 @@ const elements = [
   justify-content: flex-start;
   align-items    : center;
   text-align     : center;
-  gap            : var(--sp-larger);
+  gap            : var(--sp-large);
   padding        : calc(var(--sp-larger) * 1.5)  var(--sp-large);
   position       : relative;
 
-  
+  &.active {
+    animation-name     : slideInDown;
+    animation-duration : .5s;
+    animation-fill-mode: forwards;
+  }
+
   img {
     border-radius: 50%;
     width        : 160px;
@@ -110,5 +114,17 @@ const elements = [
 
 .member_list_contents {
   color : var(--black);
+}
+
+@keyframes slideInDown {
+  from {
+    opacity  : 0;
+    transform: translateY(-36px);
+  }
+
+  to {
+    opacity  : 1;
+    transform: translateY(0px);
+  }
 }
 </style>

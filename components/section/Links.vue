@@ -1,26 +1,33 @@
 <script setup lang ="ts">
-  const links = [
-    {
-      team:'社名',
-      description:'株式会社田中旗店',
-    },
-    {
-      team:'所在地',
-      description:'〒541-0048<br>大阪府大阪市中央区瓦町3丁目2-6',
-    },
-    {
-      team:'WEBサイト',
-      description:'http://www.tanakaflag.jp/',
-    },
-    {
-      team:'代表取締役',
-      description:'田中 哲',
-    },
-  ]
+const links = [
+  {
+    team:'社名',
+    description:'株式会社田中旗店',
+  },
+  {
+    team:'所在地',
+    description:'〒541-0048<br>大阪府大阪市中央区瓦町3丁目2-6',
+  },
+  {
+    team:'WEBサイト',
+    description:'http://www.tanakaflag.jp/',
+  },
+  {
+    team:'代表取締役',
+    description:'田中 哲',
+  },
+]
+
+const props = defineProps<{
+  isCurrent : boolean
+}>()
 </script>
 
 <template>
-  <SectionContainer :sectionName="'LINKS'">
+  <SectionContainer 
+    sectionName='LINKS'
+    :isCurrent="isCurrent"
+  >
     <div :class="$style.links_wrapper">
       <div :class="$style.inks_contents">
         <h4 :class="$style.links_list_title">運営会社</h4>

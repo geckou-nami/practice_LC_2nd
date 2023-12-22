@@ -17,17 +17,23 @@
     },
   ]
 
-//   onMounted(() => {
-//   useIntersectionObserver().doObserve(elements)
-// })
+const props = defineProps<{
+  isCurrent: boolean
+}>()
 </script>
 
 <template>
-  <SectionContainer :sectionName="'ACTIVITY'">
+  <SectionContainer 
+    sectionName='ACTIVITY'
+    :isCurrent="isCurrent"
+  >
     <div :class="$style.activity_wrapper">
-      <div :class="$style.activity_item"
-        v-for=" activity in activities"
+      <div :class="[$style.activity_item, isCurrent ? $style.active : '']"
+        v-for=" (activity,index) in activities"
         :key = "activity.team"
+        :style="{
+        animationDelay: `${index * .1}s`,
+      }"
       >
         <div :class="$style.icon_circle">
           <component :is ="activity.image"/>
@@ -63,11 +69,18 @@
   position   : relative;
   left       : var(--sp-larger);
 
+  &.active {
+    opacity            : 0;
+    animation-name     : slideInLeft;
+    animation-duration : .5s;
+    animation-fill-mode: forwards;
+  }
+
   @include mediaScreen('tablet') {
     display       : flex;
     flex-direction: column;
-    left:0 !important;
-    max-width: 100%;
+    left          : 0 !important;
+    max-width     : 100%;
   }
 
   &:nth-child(1) {
@@ -98,21 +111,33 @@
   mix-blend-mode : luminosity;
 
   @include mediaScreen('tablet') {
-    width :calc(var(--bv) * 26);
-    height :calc(var(--bv) * 26);
+    width : calc(var(--bv) * 26);
+    height: calc(var(--bv) * 26);
   }
 }
 
 .activity_contents {
-  display: flex;
+  display       : flex;
   flex-direction: column;
-  gap: var(--sp-medium);
-  line-height: 1.8;
+  gap           : var(--sp-medium);
+  line-height   : 1.8;
 
   h4 {
     @include mediaScreen('tablet') {
       text-align : center;
     }
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity  : 0;
+    transform: translateX(-36px);
+  }
+
+  to {
+    opacity  : 1;
+    transform: translateX(0px);
   }
 }
 </style>

@@ -27,8 +27,8 @@
 
   @include mediaScreen('tablet') {
     font-size: var(--fs-max);
-    width        : calc(var(--bv) * 44);
-    height       : calc(var(--bv) * 10);
+    width    : calc(var(--bv) * 44);
+    height   : calc(var(--bv) * 10);
   }
 }
 </style>

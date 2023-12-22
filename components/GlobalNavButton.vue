@@ -2,9 +2,14 @@
 const isActive = ref(false);
 
 const toggleMenu = () => {
-  isActive.value = !isActive.value;
-  console.log(isActive.value);
+  isActive.value = !isActive.value
+  console.log(isActive.value)
+  emit('emitEvent', isActive.value)
 }
+
+const emit = defineEmits<{
+  (e: 'emitEvent', state: boolean): void
+}>()
 
 const links = [
   {
@@ -24,29 +29,44 @@ const links = [
     text: '関連リンク',
   },
 ]
+
+const pageScroll = (id: string) => {
+  const el = document.getElementById(id);
+  if (el) {
+    const elTop = el.getBoundingClientRect().top + window.pageYOffset;
+    window.scrollTo({ top: elTop, left: 0, behavior: 'smooth' });
+  }
+};
+
+const scrollToSection = (name: string): void => {
+  pageScroll(name)
+  isActive.value = false
+  emit('emitEvent', false)
+}
+
 </script>
 
 <template>
-  <div :class="$style.global_nav_container">
-    <div :class="[$style.hamburger_circle, isActive ? $style.active : '']" />
+  <div :class="$style.global_nav_button">
     <button 
       :class="[$style.hamburger_menu, isActive ? $style.active : '']"
       @click="toggleMenu"
     >
-    {{ isActive }}
       <span></span> 
       <span></span>
       <span></span>
     </button>
     <div :class="[$style.nav_list_wrapper, isActive ? $style.active : '']">
       <h1><img src="~/assets/images/logo_black.webp" alt="日本ライブコマース協会" :class="$style.main_logo"></h1>
-      <dl 
-        :class="$style.nav_list"
-        v-for="link in links"
-        :key="link.name"
-      >
-        <dt>{{ link.name }}</dt>
-        <dd>{{ link.text }}</dd>
+      <dl :class="$style.nav_list">
+        <div 
+          v-for="link in links"
+          :key="link.name"
+          @click="scrollToSection(link.name)"
+        >
+          <dt>{{ link.name }}</dt>
+          <dd>{{ link.text }}</dd>
+        </div>
       </dl>
     </div>
   </div>
@@ -55,38 +75,15 @@ const links = [
 <style lang="scss" module>
 @use '~/assets/scss/mixin' as *;
 
-.global_nav_container {
+.global_nav_button {
   display        : flex;
-  justify-content: center;
-  align-items    : center;
-  position       : relative;
-}
-
-.hamburger_circle {
-  width              : calc(var(--bv) * 8);
-  height             : calc(var(--bv) * 8);
-  aspect-ratio       : 1;
-  border-radius      : 50%;
-  background-color   : var(--white);
-  animation-name     : GlobalNavClose;
-  animation-duration : 0.4s;
-  animation-fill-mode: forwards;
-
-  &.active {
-    background-color         : var(--transparent-white);
-    animation-name           : GlobalNavOpen;
-    animation-duration       : 0.8s;
-    animation-fill-mode      : forwards;
-    animation-timing-function: ease-in-out;
+  justify-content: flex-end;
+  align-items    : flex-start;
+  /* width:100%;
+  height:100%; */
   }
 
-  @include mediaScreen('tablet') {
-    width : 50px;
-    height: 50px;
-  }
-}
 .hamburger_menu {
-  position: absolute;
   --opacity   : 1;
   --rotate    : 0;
   --translate : .5rem;
@@ -129,7 +126,6 @@ const links = [
   }
 }
 
-
 .nav_list_wrapper {
   width          : 100%;
   height         : 100vh;
@@ -159,22 +155,34 @@ const links = [
 .main_logo {
   width        : calc(var(--bv) * 65);
   margin-bottom: var(--sp-medium);
+
+  @include mediaScreen('tablet') {
+    width        : calc(var(--bv) * 40);
+  }
 }
 
 .nav_list {
-  dt {
-    font-family  : var(--font-family-rounded);
-    font-size    : var(--fs-max);
-    font-weight  : bold;
-    color        : var(--pink);
-  }
+  display       : flex;
+  flex-direction: column;
+  gap           : var(--sp-large);
 
-  dd {
-    color        : var(--black);
+  div {
+    cursor: pointer;
+
+    dt {
+      font-family  : var(--font-family-rounded);
+      font-size    : var(--fs-max);
+      font-weight  : bold;
+      color        : var(--pink);
+    }
+
+    dd {
+      color        : var(--black);
+    }
   }
 }
 
-@keyframes GlobalNavOpen {
+/* @keyframes GlobalNavOpen {
   0% {
     transform: scale(1);
   }
@@ -189,5 +197,5 @@ const links = [
   100% {
     transform: scale(1);
   }
-}
+} */
 </style>

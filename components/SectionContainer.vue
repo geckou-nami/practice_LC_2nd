@@ -23,9 +23,10 @@ const props = defineProps<Props>()
 <style lang="scss" module>
 @use '~/assets/scss/mixin' as *;
 .section_container {
-  width  : 100%;
-  padding: calc(var(--sp-large) * 10) calc(var(--border-margin) * 2);
-  margin : 0 auto;
+  width     : 100%;
+  min-height: 100dvh;
+  padding   : calc(var(--sp-large) * 8) calc(var(--border-margin) * 2);
+  margin    : 0 auto;
 
   @include mediaScreen('mobile') {
     padding: calc(var(--sp-large) * 10) calc(var(--border-margin) * 2);
